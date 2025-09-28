@@ -4,8 +4,8 @@ public interface AppConstants {
 
     interface Question {
         String SHOW = "ЧЕЛОВЕК"; // Заголовок на стартовой странице
-        String DESCRIPTION  = "Ваша задача ......";
-        String RULES  = "Правила: .......";// Описание правил игры
+        String DESCRIPTION  = "В городе происходят странные вещи .....";
+//        String RULES  = "Правила: ваша задача выбирать варианты ответов представленных на странице";// Описание правил игры
         String QUESTION_1 = "Вы просыпаетесь от громких стуков в дверь. Вы никого не ждали. Ваши действия?";
         String QUESTION_2 = "Вы спрашиваете - \" Кто там? \". Ответа вы не получаете. Ваши действия? ";
         String QUESTION_3 = "Вы открыли дверь. Лица человека не видно. Вы замечаете, как одежда человека неестественным образом шевелиться. Ваши действия? ";
@@ -49,6 +49,7 @@ public interface AppConstants {
         String WIN = "win";
         String ANSWER = "answer";
         String QUESTION = "question";
+        String NUMBER_GAME_COMPLETED = "numberGamesCompleted";
 
     }
 }

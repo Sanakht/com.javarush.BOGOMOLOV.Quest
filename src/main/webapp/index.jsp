@@ -9,21 +9,25 @@
 </head>
 <body>
 
-<h1>
+
   <c:if test="${sessionScope.start != true}" >
+  <h1>
     <%=
     AppConstants.Question.SHOW
     %>
-    <br/>
+  </h1>
+
+  <h3>
     <%=
     AppConstants.Question.DESCRIPTION
     %>
     <br/>
-    <%=
-    AppConstants.Question.RULES
-    %>
+  </h3>
+    <%--    <%=--%>
+<%--    AppConstants.Question.RULES--%>
+<%--    %>--%>
   </c:if>
-</h1>
+
 
 <c:set var="question1" value="<%=AppConstants.Question.QUESTION_1%>"/>
 <c:set var="question2" value="<%=AppConstants.Question.QUESTION_2%>"/>
@@ -31,39 +35,22 @@
 <c:set var="question4" value="<%=AppConstants.Question.QUESTION_4%>"/>
 
 
-<c:set var="start" value="<%= session.getAttribute(AppConstants.SessionParameters.START)%>"/>
-<c:set var="weapon" value="<%= session.getAttribute(AppConstants.SessionParameters.WEAPON)%>"/>
-<c:set var="dead" value="<%= session.getAttribute(AppConstants.SessionParameters.DEAD)%>"/>
-<c:set var="win" value="<%= session.getAttribute(AppConstants.SessionParameters.WIN)%>"/>
-<c:set var="question" value="<%= session.getAttribute(AppConstants.SessionParameters.QUESTION)%>"/>
-<c:set var="answer" value="<%= session.getAttribute(AppConstants.SessionParameters.ANSWER)%>"/>
-
-<c:set var="session" value="<%= request.getSession().toString()%>"/>
-
-
 <c:choose>
   <c:when test="${sessionScope.start != true}">
-    <p>Сессия не запущена</p>
     <form method="get" action="start">
       <button type="submit">Запустить квест</button>
     </form>
   </c:when>
-<%--  <c:when test="${sessionScope.start == true}">--%>
-<%--    <p>Сессия запущена</p>--%>
-<%--    <form method="post" action="restart">--%>
-<%--      <button type="submit">Сбросить квест</button>--%>
-<%--    </form>--%>
-<%--  </c:when>--%>
   <c:when test="${sessionScope.dead == true}">
     <p>${sessionScope.question}</p>
-    <p>Вы умерли, хотите перезапустить сессию?</p>
+    <p>Вы проиграли, хотите перезапустить квест?</p>
     <form method="post" action="restart">
       <button type="submit">Сбросить квест</button>
     </form>
   </c:when>
   <c:when test="${sessionScope.win == true}">
     <p>${sessionScope.question}</p>
-    <p>Вы прошли, хотите перезапустить сессию?</p>
+    <p>Вы прошли, хотите перезапустить квест?</p>
     <form method="post" action="restart">
       <button type="submit">Сбросить квест</button>
     </form>
@@ -78,14 +65,13 @@
 </c:if>
 
 
-
 <c:if test = "${sessionScope.question == null && chek}">
   <p>
     <%=
     AppConstants.Question.QUESTION_1
     %>
   </p>
-  <form method="post" action="/start">
+  <form method="post" action="start">
     <input type="radio" name="answer" value="ANSWER_1_1"> <%= AppConstants.Answer.ANSWER_1_1%><br/>
     <input type="radio" name="answer" value="ANSWER_1_2"> <%= AppConstants.Answer.ANSWER_1_2%><br/>
     <input type="radio" name="answer" value="ANSWER_1_3"> <%= AppConstants.Answer.ANSWER_1_3%><br/>
@@ -99,7 +85,7 @@
     AppConstants.Question.QUESTION_2
     %>
   </p>
-  <form method="post" action="/start">
+  <form method="post" action="start">
     <input type="radio" name="answer" value="ANSWER_2_1"> <%= AppConstants.Answer.ANSWER_2_1%><br/>
     <input type="radio" name="answer" value="ANSWER_2_2"> <%= AppConstants.Answer.ANSWER_2_2%><br/>
     <input type="radio" name="answer" value="ANSWER_2_3"> <%= AppConstants.Answer.ANSWER_2_3%><br/>
@@ -113,7 +99,7 @@
     AppConstants.Question.QUESTION_3
     %>
   </p>
-  <form method="post" action="/start">
+  <form method="post" action="start">
     <input type="radio" name="answer" value="ANSWER_3_1"> <%= AppConstants.Answer.ANSWER_3_1%><br/>
     <input type="radio" name="answer" value="ANSWER_3_2"> <%= AppConstants.Answer.ANSWER_3_2%><br/>
     <input type="radio" name="answer" value="ANSWER_3_3"> <%= AppConstants.Answer.ANSWER_3_3%><br/>
@@ -127,7 +113,7 @@
     AppConstants.Question.QUESTION_4
     %>
   </p>
-  <form method="post" action="/start">
+  <form method="post" action="start">
     <input type="radio" name="answer" value="ANSWER_4_1"> <%= AppConstants.Answer.ANSWER_4_1%><br/>
     <input type="radio" name="answer" value="ANSWER_4_2"> <%= AppConstants.Answer.ANSWER_4_2%><br/>
     <button type="submit"> Подтвердить </button><br/>
@@ -139,6 +125,15 @@
 </body>
 </html>
 
+<c:set var="start" value="<%= session.getAttribute(AppConstants.SessionParameters.START)%>"/>
+<c:set var="weapon" value="<%= session.getAttribute(AppConstants.SessionParameters.WEAPON)%>"/>
+<c:set var="dead" value="<%= session.getAttribute(AppConstants.SessionParameters.DEAD)%>"/>
+<c:set var="win" value="<%= session.getAttribute(AppConstants.SessionParameters.WIN)%>"/>
+<c:set var="question" value="<%= session.getAttribute(AppConstants.SessionParameters.QUESTION)%>"/>
+<c:set var="answer" value="<%= session.getAttribute(AppConstants.SessionParameters.ANSWER)%>"/>
+<c:set var="numberGamesCompleted" value="<%= session.getAttribute(AppConstants.SessionParameters.NUMBER_GAME_COMPLETED)%>"/>
+
+<c:set var="session" value="<%= request.getSession().toString()%>"/>
 
 <p>
   Атрибуты сессии: <br/>
@@ -148,7 +143,7 @@
   dead: ${dead} <br/>
   win: ${win} <br/>
   question: ${question} <br/>
-<%--  answer: ${answer}<br/>--%>
+  numberGamesCompleted: ${numberGamesCompleted}<br/>
 </p>
 
 <br/>
