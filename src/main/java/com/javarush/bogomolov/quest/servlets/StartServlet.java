@@ -11,8 +11,6 @@ import java.io.IOException;
 @WebServlet(name = "start-Servlet", value = "/start")
 public class StartServlet extends HttpServlet {
 
-    private static String question;
-    private static String answer;
     private static int numberGamesCompleted = 0;
 
 
@@ -40,9 +38,16 @@ public class StartServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        answer = (String) request.getParameter("answer");
+        String answer = (String) request.getParameter("answer");
 
+        setAttribute(session, answer);
+
+        response.sendRedirect("index.jsp");
+    }
+
+    private void setAttribute(HttpSession session, String answer) {
         if(answer != null) {
+            String question;
             switch(answer) {
                 case "ANSWER_1_1" -> {
                     question = AppConstants.Question.QUESTION_2;
@@ -100,7 +105,8 @@ public class StartServlet extends HttpServlet {
                     numberGamesCompleted++;
                 }
             }
+        } else {
+            throw new Error();
         }
-        response.sendRedirect("index.jsp");
     }
 }

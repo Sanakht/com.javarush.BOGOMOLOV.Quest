@@ -75,7 +75,7 @@
     <input type="radio" name="answer" value="ANSWER_1_1"> <%= AppConstants.Answer.ANSWER_1_1%><br/>
     <input type="radio" name="answer" value="ANSWER_1_2"> <%= AppConstants.Answer.ANSWER_1_2%><br/>
     <input type="radio" name="answer" value="ANSWER_1_3"> <%= AppConstants.Answer.ANSWER_1_3%><br/>
-    <button type="submit"> Подтвердить </button><br/>
+    <button type="submit" > Подтвердить </button><br/>
   </form>
 </c:if>
 
@@ -89,7 +89,7 @@
     <input type="radio" name="answer" value="ANSWER_2_1"> <%= AppConstants.Answer.ANSWER_2_1%><br/>
     <input type="radio" name="answer" value="ANSWER_2_2"> <%= AppConstants.Answer.ANSWER_2_2%><br/>
     <input type="radio" name="answer" value="ANSWER_2_3"> <%= AppConstants.Answer.ANSWER_2_3%><br/>
-    <button type="submit"> Подтвердить </button><br/>
+    <button type="submit" > Подтвердить </button><br/>
   </form>
 </c:if>
 
