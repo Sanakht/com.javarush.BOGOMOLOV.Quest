@@ -11,7 +11,7 @@ import java.io.IOException;
 @WebServlet(name = "RestartServlet", value = "/restart")
 public class RestartServlet extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getSession().invalidate();
         response.sendRedirect("index.jsp");
     }

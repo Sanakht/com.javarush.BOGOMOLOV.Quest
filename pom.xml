@@ -18,6 +18,7 @@
   </properties>
 
     <dependencies>
+
         <!--SERVLETS-->
         <dependency>
             <groupId>jakarta.servlet</groupId>
@@ -35,6 +36,21 @@
             <artifactId>jakarta.servlet.jsp.jstl</artifactId>
             <version>2.0.0</version>
         </dependency>
+
+        <!--TEST-->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.13.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>5.13.0</version>
+            <scope>test</scope>
+        </dependency>
+
         <!--LOMBOK-->
         <dependency>
             <groupId>org.projectlombok</groupId>
