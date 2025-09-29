@@ -28,8 +28,9 @@ public class StartServlet extends HttpServlet {
             session.setAttribute(AppConstants.SessionParameters.NUMBER_GAME_COMPLETED, numberGamesCompleted);
         }
 
+        response.sendRedirect("index.jsp");
 
-        getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+//        request.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 
     }
 
@@ -40,12 +41,12 @@ public class StartServlet extends HttpServlet {
 
         String answer = (String) request.getParameter("answer");
 
-        setAttribute(session, answer);
+        setAttributeMethod(session, answer);
 
         response.sendRedirect("index.jsp");
     }
 
-    private void setAttribute(HttpSession session, String answer) {
+    private void setAttributeMethod(HttpSession session, String answer) {
         if(answer != null) {
             String question;
             switch(answer) {
